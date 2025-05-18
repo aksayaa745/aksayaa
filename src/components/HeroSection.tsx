@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
 import { ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
@@ -56,11 +56,9 @@ const HeroSection = () => {
                       align: "start",
                     }}
                     className="w-full"
-                    onSelect={(api) => {
-                      if (api) {
-                        const index = api.selectedScrollSnap();
-                        setActiveIndex(index);
-                      }
+                    onSelect={(api: CarouselApi) => {
+                      const index = api.selectedScrollSnap();
+                      setActiveIndex(index);
                     }}
                   >
                     <CarouselContent className="-ml-1 h-12">
