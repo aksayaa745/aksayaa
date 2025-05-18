@@ -1,10 +1,7 @@
-
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-
 const AboutSection = () => {
-  return (
-    <section id="about" className="py-20 relative">
+  return <section id="about" className="py-20 relative">
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="text-accent font-medium mb-1">WHO AM I</h2>
@@ -41,7 +38,7 @@ const AboutSection = () => {
                     <span className="text-accent text-sm">2022-2026</span>
                   </div>
                   <p className="text-sm text-muted-foreground mb-2">B.E. Computer Science and Design</p>
-                  <p className="text-xs text-muted-foreground">Expected Graduation: 2026</p>
+                  
                 </CardContent>
               </Card>
               
@@ -61,8 +58,6 @@ const AboutSection = () => {
       
       {/* Background Element */}
       <div className="absolute top-1/2 transform -translate-y-1/2 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10"></div>
-    </section>
-  );
+    </section>;
 };
-
 export default AboutSection;
