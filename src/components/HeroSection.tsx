@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
 import { ArrowRight } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const HeroSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -56,7 +57,7 @@ const HeroSection = () => {
                       align: "start",
                     }}
                     className="w-full"
-                    onSelect={(api: CarouselApi) => {
+                    onSelect={(api: any) => {
                       const index = api.selectedScrollSnap();
                       setActiveIndex(index);
                     }}
@@ -110,9 +111,16 @@ const HeroSection = () => {
               {/* Profile image container */}
               <div className="relative z-10 animate-float">
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent/20 p-1">
-                  <div className="w-full h-full bg-secondary/50 rounded-full flex items-center justify-center overflow-hidden">
-                    <span className="text-muted-foreground">Profile Image</span>
-                  </div>
+                  <Avatar className="w-full h-full">
+                    <AvatarImage 
+                      src="https://postimage.me/images/2025/05/18/meee.jpg" 
+                      alt="Aksayaa's profile picture" 
+                      className="w-full h-full object-cover"
+                    />
+                    <AvatarFallback className="w-full h-full bg-secondary/50 flex items-center justify-center text-muted-foreground">
+                      A
+                    </AvatarFallback>
+                  </Avatar>
                 </div>
               </div>
               
