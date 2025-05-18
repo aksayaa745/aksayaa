@@ -36,45 +36,50 @@ const HeroSection = () => {
         <div className="flex flex-col lg:flex-row items-center gap-10">
           {/* Left column - Text and CTA */}
           <div className="lg:w-1/2 space-y-6 animate-fade-in">
-            <div className="flex items-center space-x-2 mb-4">
-              <span className="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
-              <p className="text-sm text-muted-foreground">Available for new opportunities</p>
-            </div>
-            
-            <div className="space-y-4">
-              <h2 className="text-xl md:text-3xl font-light tracking-tight">Hello, I'm</h2>
-              <h1 className="text-5xl md:text-7xl font-serif font-bold bg-gradient-to-r from-white via-white/90 to-accent/80 bg-clip-text text-transparent">
-                AKSAYAA
-              </h1>
-              
-              <div className="h-16">
-                <Carousel
-                  opts={{
-                    loop: true,
-                    align: "start",
-                  }}
-                  className="w-full"
-                  onSelect={(api) => {
-                    const index = api?.selectedScrollSnap() || 0;
-                    setActiveIndex(index);
-                  }}
-                >
-                  <CarouselContent className="-ml-1 h-16">
-                    {titles.map((title, index) => (
-                      <CarouselItem key={index} className="p-1">
-                        <h3 className="text-2xl md:text-4xl font-serif opacity-80">
-                          {title}
-                        </h3>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                </Carousel>
+            {/* Redesigned intro section with better hierarchy */}
+            <div className="space-y-6">
+              <div className="flex items-center space-x-2 mb-2">
+                <span className="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
+                <p className="text-sm font-medium text-accent">Available for new opportunities</p>
               </div>
               
-              <p className="text-muted-foreground max-w-lg text-base md:text-lg">
-                Specialized in creating engaging digital experiences through UI/UX Design,
-                Frontend Development, and exploring new technologies.
-              </p>
+              <div className="space-y-3">
+                <h1 className="text-5xl md:text-7xl font-serif font-bold bg-gradient-to-r from-white via-white/90 to-accent/80 bg-clip-text text-transparent">
+                  <span className="block text-2xl md:text-3xl font-light tracking-wide text-foreground mb-1">I'm</span>
+                  AKSAYAA
+                </h1>
+                
+                <div className="h-12 mt-2">
+                  <Carousel
+                    opts={{
+                      loop: true,
+                      align: "start",
+                    }}
+                    className="w-full"
+                    onSelect={(api) => {
+                      if (api) {
+                        const index = api.selectedScrollSnap();
+                        setActiveIndex(index);
+                      }
+                    }}
+                  >
+                    <CarouselContent className="-ml-1 h-12">
+                      {titles.map((title, index) => (
+                        <CarouselItem key={index} className="p-1">
+                          <h3 className="text-2xl md:text-4xl font-serif opacity-80">
+                            {title}
+                          </h3>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                  </Carousel>
+                </div>
+                
+                <p className="text-muted-foreground max-w-lg text-base md:text-lg leading-relaxed mt-4">
+                  Specialized in creating engaging digital experiences through UI/UX Design,
+                  Frontend Development, and exploring new technologies.
+                </p>
+              </div>
             </div>
             
             <div className="flex flex-wrap gap-4 pt-4">
