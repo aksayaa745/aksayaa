@@ -113,7 +113,7 @@ const HeroSection = () => {
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent/20 p-1">
                   <Avatar className="w-full h-full">
                     <AvatarImage 
-                      src="https://postimage.me/images/2025/05/18/meee.jpg" 
+                      src="https://i.ibb.co/5g3yxYJG/mecore.jpg" 
                       alt="Aksayaa's profile picture" 
                       className="w-full h-full object-cover"
                     />
