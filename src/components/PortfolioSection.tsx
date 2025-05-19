@@ -3,35 +3,53 @@ import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const projects = [
+  {
+    title: "WheelWhiz",
+    description: "AI-powered automotive diagnostic app with real-time issue detection and solutions",
+    technologies: ["React Native", "TensorFlow", "Firebase", "Node.js"],
+    year: "2025",
+    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    github: "https://github.com/aksayaa/wheelwhiz",
+    demo: "https://wheelwhiz.demo.app"
+  },
   {
     title: "Accident Detection, Alert & Assistance System",
     description: "ML-based real-time vehicle accident and helmet detection system with immediate alerts",
     technologies: ["Python", "OpenCV", "Flask", "SQLite", "Twilio", "SendGrid"],
     year: "2025",
-    image: ""
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    github: "https://github.com/aksayaa/accident-detection",
+    demo: "https://accidentdetection.demo.app"
   },
   {
     title: "3D Endless Runner Game",
     description: "Developed in Unity using Mixamo animations, showcased at college game expo",
     technologies: ["Unity", "C#", "Mixamo", "3D Modeling"],
-    year: "2025",
-    image: ""
+    year: "2024",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    github: "https://github.com/aksayaa/endless-runner",
+    demo: "https://endlessrunner.demo.app"
   },
   {
     title: "Airline Reservation System",
     description: "Web application with CRUD operations for flight bookings and user management",
     technologies: ["Flask", "MySQL", "HTML/CSS", "JavaScript"],
     year: "2024",
-    image: ""
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    github: "https://github.com/aksayaa/airline-reservations",
+    demo: "https://airlinereservation.demo.app"
   },
   {
     title: "Habit Tracker Mobile App",
     description: "Mobile application to track daily habits and personal goals",
     technologies: ["React Native", "Firebase", "Redux"],
-    year: "2024",
-    image: ""
+    year: "2023",
+    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
+    github: "https://github.com/aksayaa/habit-tracker",
+    demo: "https://habittracker.demo.app"
   }
 ];
 
@@ -65,13 +83,19 @@ const PortfolioSection = () => {
                   <Card className="glass-morphism overflow-hidden">
                     <CardContent className="p-0">
                       <div className="grid grid-cols-1 lg:grid-cols-2">
-                        <div className="h-60 lg:h-auto bg-secondary/50 flex items-center justify-center">
-                          <span className="text-muted-foreground">Project Image</span>
+                        <div className="h-60 lg:h-auto bg-secondary/50 overflow-hidden">
+                          <AspectRatio ratio={16/9} className="h-full">
+                            <img 
+                              src={project.image} 
+                              alt={project.title} 
+                              className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
+                            />
+                          </AspectRatio>
                         </div>
                         
                         <div className="p-6 lg:p-8">
                           <div className="flex justify-between items-start mb-3">
-                            <h4 className="font-medium text-xl">{project.title}</h4>
+                            <h4 className="font-medium text-xl text-gradient">{project.title}</h4>
                             <span className="text-accent text-sm">{project.year}</span>
                           </div>
                           
@@ -89,13 +113,17 @@ const PortfolioSection = () => {
                           </div>
                           
                           <div className="flex space-x-3">
-                            <Button variant="outline" size="sm" className="group">
-                              <Github className="h-4 w-4 mr-2 group-hover:text-accent transition-colors" />
-                              Code
+                            <Button variant="outline" size="sm" className="group" asChild>
+                              <a href={project.github} target="_blank" rel="noopener noreferrer">
+                                <Github className="h-4 w-4 mr-2 group-hover:text-accent transition-colors" />
+                                Code
+                              </a>
                             </Button>
-                            <Button variant="outline" size="sm" className="group">
-                              <ExternalLink className="h-4 w-4 mr-2 group-hover:text-accent transition-colors" />
-                              Live Demo
+                            <Button variant="outline" size="sm" className="group" asChild>
+                              <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="h-4 w-4 mr-2 group-hover:text-accent transition-colors" />
+                                Live Demo
+                              </a>
                             </Button>
                           </div>
                         </div>
