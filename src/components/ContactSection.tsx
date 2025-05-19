@@ -82,7 +82,7 @@ const ContactSection = () => {
       // Send email using EmailJS
       await emailjs.send(
         'service_j4b0q8f', // Your Service ID
-        'template_btu3t75', // Your Template ID
+        'template_btu3t75', // Your updated Template ID
         {
           from_name: formData.name,
           from_email: formData.email,
