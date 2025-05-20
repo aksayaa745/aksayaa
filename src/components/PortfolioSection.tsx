@@ -7,15 +7,6 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const projects = [
   {
-    title: "WheelWhiz",
-    description: "AI-powered automotive diagnostic app with real-time issue detection and solutions",
-    technologies: ["React Native", "TensorFlow", "Firebase", "Node.js"],
-    year: "2025",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-    github: "https://github.com/aksayaa/wheelwhiz",
-    demo: "https://wheelwhiz.demo.app"
-  },
-  {
     title: "Accident Detection, Alert & Assistance System",
     description: "ML-based real-time vehicle accident and helmet detection system with immediate alerts",
     technologies: ["Python", "OpenCV", "Flask", "SQLite", "Twilio", "SendGrid"],
@@ -32,6 +23,15 @@ const projects = [
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
     github: "https://github.com/aksayaa/endless-runner",
     demo: "https://endlessrunner.demo.app"
+  },
+  {
+    title: "WheelWhiz",
+    description: "A smart vehicle record at your finger tips",
+    technologies: ["React Native", "TensorFlow", "Firebase", "Node.js"],
+    year: "2025",
+    image: "https://images.unsplash.com/photo-1487887235947-a955ef187fcc",
+    github: "https://github.com/aksayaa/wheelwhiz",
+    demo: "https://wheelwhiz.demo.app"
   },
   {
     title: "Airline Reservation System",
