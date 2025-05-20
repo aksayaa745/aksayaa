@@ -11,7 +11,7 @@ const projects = [
     description: "ML-based real-time vehicle accident and helmet detection system with immediate alerts",
     technologies: ["Python", "OpenCV", "Flask", "SQLite", "Twilio", "SendGrid"],
     year: "2025",
-    image: "https://devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2F2536e2a7147d4a878532da4f0a490d6c%2Fprojects%2F344f92e9de134c51be78467bd7c10580%2Fcc4223dc-44bd-4e46-bf0a-aefb53e7ad48.png&w=1440&q=75",
+    image: "https://i.ibb.co/3mznxWPh/image.png",
     github: "https://github.com/aksayaa745/Accident_Detection_ml",
     demo: "https://accidentdetection.demo.app"
   },
