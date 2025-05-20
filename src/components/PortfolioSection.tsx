@@ -11,16 +11,16 @@ const projects = [
     description: "ML-based real-time vehicle accident and helmet detection system with immediate alerts",
     technologies: ["Python", "OpenCV", "Flask", "SQLite", "Twilio", "SendGrid"],
     year: "2025",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-    github: "https://github.com/aksayaa/accident-detection",
+    image: "https://devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2F2536e2a7147d4a878532da4f0a490d6c%2Fprojects%2F344f92e9de134c51be78467bd7c10580%2Fcc4223dc-44bd-4e46-bf0a-aefb53e7ad48.png&w=1440&q=75",
+    github: "https://github.com/aksayaa745/Accident_Detection_ml",
     demo: "https://accidentdetection.demo.app"
   },
   {
     title: "3D Endless Runner Game",
     description: "Developed in Unity using Mixamo animations, showcased at college game expo",
     technologies: ["Unity", "C#", "Mixamo", "3D Modeling"],
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    year: "2025",
+    image: "https://i.ibb.co/1tDgG0ZS/Screenshot-2025-04-23-213907.png",
     github: "https://github.com/aksayaa/endless-runner",
     demo: "https://endlessrunner.demo.app"
   },
@@ -29,7 +29,7 @@ const projects = [
     description: "A smart vehicle record at your finger tips",
     technologies: ["React Native", "TensorFlow", "Firebase", "Node.js"],
     year: "2025",
-    image: "https://images.unsplash.com/photo-1487887235947-a955ef187fcc",
+    image: "https://i.ibb.co/YBDksxXk/Screenshot-2025-05-12-114634.png",
     github: "https://github.com/aksayaa/wheelwhiz",
     demo: "https://wheelwhiz.demo.app"
   },
