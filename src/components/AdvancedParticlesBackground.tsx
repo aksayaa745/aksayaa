@@ -81,7 +81,7 @@ const AdvancedParticlesBackground: React.FC<AdvancedParticlesBackgroundProps> = 
           direction: "none" as const,
           enable: true,
           outModes: {
-            default: "bounce",
+            default: "bounce" as const,
           },
           random: true,
           speed: isMobile ? 0.5 : 1,
