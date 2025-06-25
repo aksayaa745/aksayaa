@@ -6,7 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Github, Linkedin, Mail, Phone, Loader, Send } from "lucide-react";
 import { toast } from "@/components/ui/sonner";
+import { motion } from "framer-motion";
 import emailjs from 'emailjs-com';
+import EnhancedParticlesBackground from "@/components/EnhancedParticlesBackground";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Interface for form data
 interface FormData {
@@ -17,6 +20,9 @@ interface FormData {
 }
 
 const ContactSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({ threshold: 0.3 });
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation({ threshold: 0.2, delay: 200 });
+
   // Form state
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -109,80 +115,146 @@ const ContactSection = () => {
     }
   };
 
+  const contactInfo = [
+    {
+      icon: Mail,
+      text: "aksayaa745@gmail.com",
+      link: "mailto:aksayaa745@gmail.com"
+    },
+    {
+      icon: Phone,
+      text: "+91 9445626989",
+      link: "tel:+919445626989"
+    },
+    {
+      icon: Linkedin,
+      text: "linkedin.com/in/aksayaa-s-v",
+      link: "https://www.linkedin.com/in/aksayaa-s-v-a80b962a8/"
+    },
+    {
+      icon: Github,
+      text: "github.com/aksayaa745",
+      link: "https://github.com/aksayaa745"
+    }
+  ];
+
   return (
-    <section id="contact" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="mb-12 text-center">
-          <h2 className="text-accent font-medium mb-1">GET IN TOUCH</h2>
-          <h3 className="text-3xl md:text-5xl font-serif">Contact</h3>
-        </div>
+    <section id="contact" className="py-20 relative">
+      <EnhancedParticlesBackground variant="contact" intensity="medium" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <motion.div 
+          ref={headerRef}
+          className="mb-12 text-center"
+          initial={{ opacity: 0, y: -30 }}
+          animate={headerVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h2 
+            className="text-accent font-medium mb-1"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={headerVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            GET IN TOUCH
+          </motion.h2>
+          <motion.h3 
+            className="text-3xl md:text-5xl font-serif"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={headerVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            Contact
+          </motion.h3>
+        </motion.div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <div>
-            <h4 className="text-xl font-serif mb-6">Let's Connect</h4>
-            <p className="text-muted-foreground mb-8">
+        <div ref={contentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={contentVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <motion.h4 
+              className="text-xl font-serif mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={contentVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              Let's Connect
+            </motion.h4>
+            
+            <motion.p 
+              className="text-muted-foreground mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={contentVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
               Feel free to reach out for collaborations, opportunities, or just to say hello!
               I'm always open to discussing new projects and ideas.
-            </p>
+            </motion.p>
             
             <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <Mail className="h-5 w-5 text-accent" />
-                </div>
-                <span>aksayaa745@gmail.com</span>
-              </div>
-              
-              <div className="flex items-center space-x-3">
-                <div className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <Phone className="h-5 w-5 text-accent" />
-                </div>
-                <span>+91 9445626989</span>
-              </div>
-              
-              <div className="flex items-center space-x-3">
-                <div className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <Linkedin className="h-5 w-5 text-accent" />
-                </div>
-                <a 
-                  href="https://www.linkedin.com/in/aksayaa-s-v-a80b962a8/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
+              {contactInfo.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-center space-x-3"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={contentVisible ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
+                  whileHover={{ x: 5, transition: { duration: 0.3 } }}
                 >
-                  linkedin.com/in/aksayaa-s-v
-                </a>
-              </div>
-              
-              <div className="flex items-center space-x-3">
-                <div className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <Github className="h-5 w-5 text-accent" />
-                </div>
-                <a 
-                  href="https://github.com/aksayaa745" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
-                >
-                  github.com/aksayaa745
-                </a>
-              </div>
+                  <motion.div 
+                    className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors"
+                    whileHover={{ scale: 1.1, backgroundColor: "rgba(245, 158, 11, 0.2)" }}
+                  >
+                    <item.icon className="h-5 w-5 text-accent" />
+                  </motion.div>
+                  {item.link.startsWith('http') || item.link.startsWith('mailto') || item.link.startsWith('tel') ? (
+                    <a 
+                      href={item.link}
+                      target={item.link.startsWith('http') ? "_blank" : "_self"}
+                      rel={item.link.startsWith('http') ? "noopener noreferrer" : ""}
+                      className="hover:text-accent transition-colors group"
+                    >
+                      {item.text}
+                    </a>
+                  ) : (
+                    <span>{item.text}</span>
+                  )}
+                </motion.div>
+              ))}
             </div>
-          </div>
+          </motion.div>
           
-          <div>
-            <Card className="glass-morphism">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={contentVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Card className="glass-morphism hover:border-accent/30 transition-all duration-300">
               <CardContent className="p-6">
-                <h4 className="text-lg font-serif mb-6">Send Me a Message</h4>
+                <motion.h4 
+                  className="text-lg font-serif mb-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={contentVisible ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                >
+                  Send Me a Message
+                </motion.h4>
                 
                 <form className="space-y-4" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <motion.div 
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={contentVisible ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.8, duration: 0.6 }}
+                  >
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm">Name</label>
                       <Input 
                         id="name" 
                         placeholder="Your Name" 
-                        className="bg-secondary/30 border-secondary"
+                        className="bg-secondary/30 border-secondary focus:border-accent transition-colors"
                         value={formData.name}
                         onChange={handleChange}
                       />
@@ -195,58 +267,85 @@ const ContactSection = () => {
                         id="email" 
                         type="email" 
                         placeholder="Your Email" 
-                        className="bg-secondary/30 border-secondary"
+                        className="bg-secondary/30 border-secondary focus:border-accent transition-colors"
                         value={formData.email}
                         onChange={handleChange}
                       />
                       {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
                     </div>
-                  </div>
+                  </motion.div>
                   
-                  <div className="space-y-2">
+                  <motion.div 
+                    className="space-y-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={contentVisible ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 1, duration: 0.6 }}
+                  >
                     <label htmlFor="subject" className="text-sm">Subject</label>
                     <Input 
                       id="subject" 
                       placeholder="Subject" 
-                      className="bg-secondary/30 border-secondary"
+                      className="bg-secondary/30 border-secondary focus:border-accent transition-colors"
                       value={formData.subject}
                       onChange={handleChange}
                     />
-                  </div>
+                  </motion.div>
                   
-                  <div className="space-y-2">
+                  <motion.div 
+                    className="space-y-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={contentVisible ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 1.2, duration: 0.6 }}
+                  >
                     <label htmlFor="message" className="text-sm">Message</label>
                     <Textarea 
                       id="message" 
                       placeholder="Your Message" 
-                      className="bg-secondary/30 border-secondary min-h-[120px]"
+                      className="bg-secondary/30 border-secondary min-h-[120px] focus:border-accent transition-colors"
                       value={formData.message}
                       onChange={handleChange}
                     />
                     {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
-                  </div>
+                  </motion.div>
                   
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-accent hover:bg-accent/90"
-                    disabled={isSubmitting}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={contentVisible ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 1.4, duration: 0.6 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    {isSubmitting ? (
-                      <>
-                        <Loader className="h-4 w-4 mr-2 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="h-4 w-4 mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-accent hover:bg-accent/90 relative overflow-hidden group"
+                      disabled={isSubmitting}
+                    >
+                      <span className="relative z-10 flex items-center justify-center">
+                        {isSubmitting ? (
+                          <>
+                            <Loader className="h-4 w-4 mr-2 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="h-4 w-4 mr-2" />
+                            Send Message
+                          </>
+                        )}
+                      </span>
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/40"
+                        initial={{ scaleX: 0 }}
+                        whileHover={{ scaleX: 1 }}
+                        transition={{ duration: 0.3 }}
+                        style={{ originX: 0 }}
+                      />
+                    </Button>
+                  </motion.div>
                 </form>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
