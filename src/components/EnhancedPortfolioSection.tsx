@@ -54,7 +54,7 @@ const projects = [
 ];
 
 const EnhancedPortfolioSection = () => {
-  const { ref: headerRef, isVisible: headerVisible } = useStaggeredAnimation(1, 0);
+  const { ref: headerRef, visibleItems: headerVisible } = useStaggeredAnimation(1, 0);
   const { ref: gridRef, visibleItems } = useStaggeredAnimation(projects.length, 150);
 
   return (
@@ -66,13 +66,13 @@ const EnhancedPortfolioSection = () => {
           ref={headerRef}
           className="mb-16 text-center"
           initial={{ opacity: 0, y: -30 }}
-          animate={headerVisible ? { opacity: 1, y: 0 } : {}}
+          animate={headerVisible[0] ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         >
           <motion.h2 
             className="text-accent font-medium mb-1"
             initial={{ opacity: 0, scale: 0.9 }}
-            animate={headerVisible ? { opacity: 1, scale: 1 } : {}}
+            animate={headerVisible[0] ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             MY WORK
@@ -80,7 +80,7 @@ const EnhancedPortfolioSection = () => {
           <motion.h3 
             className="text-3xl md:text-5xl font-serif bg-gradient-to-r from-white via-white/90 to-accent/70 bg-clip-text text-transparent"
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={headerVisible ? { opacity: 1, scale: 1 } : {}}
+            animate={headerVisible[0] ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
             Featured Projects
