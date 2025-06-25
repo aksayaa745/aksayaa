@@ -5,9 +5,10 @@ import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import ExperienceSection from '@/components/ExperienceSection';
 import SkillsSection from '@/components/SkillsSection';
-import PortfolioSection from '@/components/PortfolioSection';
+import EnhancedPortfolioSection from '@/components/EnhancedPortfolioSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import { motion } from 'framer-motion';
 
 const Index = () => {
   useEffect(() => {
@@ -15,8 +16,27 @@ const Index = () => {
     document.title = "Aksayaa S V | UI/UX Designer & Full-Stack Developer";
   }, []);
 
+  const pageVariants = {
+    initial: { opacity: 0 },
+    in: { opacity: 1 },
+    out: { opacity: 0 }
+  };
+
+  const pageTransition = {
+    type: 'tween',
+    ease: 'anticipate',
+    duration: 0.8
+  };
+
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <motion.div 
+      className="flex flex-col min-h-screen bg-background text-foreground"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
       <Header />
       
       <main className="flex-grow">
@@ -24,12 +44,12 @@ const Index = () => {
         <AboutSection />
         <ExperienceSection />
         <SkillsSection />
-        <PortfolioSection />
+        <EnhancedPortfolioSection />
         <ContactSection />
       </main>
       
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 

@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselApi } from "@/components/ui/carousel";
 import { ArrowRight } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { motion } from "framer-motion";
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 const HeroSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -23,6 +25,8 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 pb-10">
+      <ParticlesBackground />
+      
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-[10%] w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
@@ -36,19 +40,34 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-10">
           {/* Left column - Text and CTA */}
-          <div className="lg:w-1/2 space-y-6 animate-fade-in">
+          <motion.div 
+            className="lg:w-1/2 space-y-6"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             {/* Redesigned intro section with better hierarchy */}
             <div className="space-y-6">
-              <div className="flex items-center space-x-2 mb-2">
+              <motion.div 
+                className="flex items-center space-x-2 mb-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
                 <span className="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
                 <p className="text-sm font-medium text-accent">Available for new opportunities</p>
-              </div>
+              </motion.div>
               
               <div className="space-y-3">
-                <h1 className="text-5xl md:text-7xl font-serif font-bold bg-gradient-to-r from-white via-white/90 to-accent/80 bg-clip-text text-transparent">
+                <motion.h1 
+                  className="text-5xl md:text-7xl font-serif font-bold bg-gradient-to-r from-white via-white/90 to-accent/80 bg-clip-text text-transparent"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                >
                   <span className="block text-2xl md:text-3xl font-light tracking-wide text-foreground mb-1">I'm</span>
                   AKSAYAA
-                </h1>
+                </motion.h1>
                 
                 <div className="h-12 mt-2">
                   <Carousel
@@ -65,52 +84,100 @@ const HeroSection = () => {
                     <CarouselContent className="-ml-1 h-12">
                       {titles.map((title, index) => (
                         <CarouselItem key={index} className="p-1">
-                          <h3 className="text-2xl md:text-4xl font-serif opacity-80">
+                          <motion.h3 
+                            className="text-2xl md:text-4xl font-serif opacity-80"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.6 + index * 0.1 }}
+                          >
                             {title}
-                          </h3>
+                          </motion.h3>
                         </CarouselItem>
                       ))}
                     </CarouselContent>
                   </Carousel>
                 </div>
                 
-                <p className="text-muted-foreground max-w-lg text-base md:text-lg leading-relaxed mt-4">
+                <motion.p 
+                  className="text-muted-foreground max-w-lg text-base md:text-lg leading-relaxed mt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                >
                   Specialized in creating engaging digital experiences through UI/UX Design,
                   Frontend Development, and exploring new technologies.
-                </p>
+                </motion.p>
               </div>
             </div>
             
-            <div className="flex flex-wrap gap-4 pt-4">
+            <motion.div 
+              className="flex flex-wrap gap-4 pt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.6 }}
+            >
               <Button 
                 onClick={scrollToContact} 
-                className="bg-accent hover:bg-accent/90 text-white group"
+                className="bg-accent hover:bg-accent/90 text-white group relative overflow-hidden"
               >
-                Get In Touch
-                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <span className="relative z-10">Get In Touch</span>
+                <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1 relative z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Button>
               <Button 
                 onClick={() => scrollToSection('portfolio')}
                 variant="outline" 
-                className="border-accent/30 hover:bg-accent/10 text-accent"
+                className="border-accent/30 hover:bg-accent/10 text-accent relative group overflow-hidden"
               >
-                View Portfolio
+                <span className="relative z-10">View Portfolio</span>
+                <div className="absolute inset-0 bg-accent/5 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           
-          {/* Right column - Profile Image */}
-          <div className="lg:w-1/2 flex justify-center items-center">
+          {/* Right column - Enhanced Profile Image */}
+          <motion.div 
+            className="lg:w-1/2 flex justify-center items-center"
+            initial={{ opacity: 0, x: 50, scale: 0.8 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+          >
             <div className="relative">
               {/* Orbit decoration */}
-              <div className="absolute inset-0 border-2 border-dashed border-accent/20 rounded-full animate-[spin_20s_linear_infinite] opacity-70"></div>
+              <motion.div 
+                className="absolute inset-0 border-2 border-dashed border-accent/20 rounded-full opacity-70"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              ></motion.div>
               
               {/* Glowing background */}
-              <div className="absolute inset-[-10%] bg-gradient-to-br from-accent/20 to-transparent rounded-full blur-2xl opacity-30"></div>
+              <motion.div 
+                className="absolute inset-[-15%] bg-gradient-to-br from-accent/20 to-transparent rounded-full blur-2xl opacity-30"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.5, 0.3]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              ></motion.div>
               
-              {/* Profile image container */}
-              <div className="relative z-10 animate-float">
-                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-accent/20 p-1">
+              {/* Profile image container - Enhanced size */}
+              <motion.div 
+                className="relative z-10"
+                animate={{ 
+                  y: [0, -10, 0] 
+                }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-accent/20 p-1 shadow-2xl shadow-accent/10">
                   <Avatar className="w-full h-full">
                     <AvatarImage 
                       src="https://i.ibb.co/5g3yxYJG/mecore.jpg" 
@@ -122,13 +189,36 @@ const HeroSection = () => {
                     </AvatarFallback>
                   </Avatar>
                 </div>
-              </div>
+              </motion.div>
               
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-accent/30 rounded-full blur-sm"></div>
-              <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-accent/20 rounded-full blur-sm"></div>
+              {/* Enhanced decorative elements */}
+              <motion.div 
+                className="absolute -top-4 -right-4 w-8 h-8 bg-accent/30 rounded-full blur-sm"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              ></motion.div>
+              <motion.div 
+                className="absolute -bottom-4 -left-4 w-12 h-12 bg-accent/20 rounded-full blur-sm"
+                animate={{ 
+                  scale: [1, 1.3, 1],
+                  opacity: [0.2, 0.5, 0.2]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              ></motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
