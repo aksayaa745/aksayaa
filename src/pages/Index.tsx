@@ -23,8 +23,8 @@ const Index = () => {
   };
 
   const pageTransition = {
-    type: 'tween',
-    ease: 'anticipate',
+    type: "tween" as const,
+    ease: [0.4, 0, 0.2, 1] as const,
     duration: 0.8
   };
 

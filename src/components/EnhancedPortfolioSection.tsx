@@ -94,7 +94,7 @@ const EnhancedPortfolioSection = () => {
       rotateX: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.4, 0, 0.2, 1]
       }
     },
   };
@@ -262,7 +262,7 @@ const EnhancedPortfolioSection = () => {
                   initial={{ x: 300, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: -300, opacity: 0 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  transition={{ duration: 0.5, ease: [0.4, 0, 0.6, 1] }}
                 >
                   <Tilt
                     tiltMaxAngleX={5}
