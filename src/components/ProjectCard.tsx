@@ -168,7 +168,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                       +{technologies.length - 3}
                     </motion.span>
                   )}
-                </div>
+                </motion.div>
               </div>
               
               <motion.div 
