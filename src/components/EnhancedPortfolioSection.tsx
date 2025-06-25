@@ -91,11 +91,7 @@ const EnhancedPortfolioSection = () => {
     visible: { 
       opacity: 1, 
       y: 0,
-      rotateX: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.4, 0, 0.2, 1]
-      }
+      rotateX: 0
     },
   };
 
@@ -140,6 +136,10 @@ const EnhancedPortfolioSection = () => {
             <motion.div
               key={index}
               variants={cardVariants}
+              transition={{
+                duration: 0.8,
+                ease: [0.4, 0, 0.2, 1]
+              }}
               whileHover={{ 
                 y: -10,
                 transition: { duration: 0.3 }
