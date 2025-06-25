@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { motion } from "framer-motion";
-import { useStaggeredAnimation } from "@/hooks/useScrollAnimation";
-import EnhancedParticlesBackground from "@/components/EnhancedParticlesBackground";
+import { useStaggeredScrollAnimation } from "@/hooks/useAdvancedScrollAnimation";
+import AdvancedParticlesBackground from "@/components/AdvancedParticlesBackground";
 import ProjectCard from "@/components/ProjectCard";
 
 const projects = [
@@ -54,12 +54,12 @@ const projects = [
 ];
 
 const EnhancedPortfolioSection = () => {
-  const { ref: headerRef, visibleItems: headerVisible } = useStaggeredAnimation(1, 0);
-  const { ref: gridRef, visibleItems } = useStaggeredAnimation(projects.length, 150);
+  const { ref: headerRef, visibleItems: headerVisible } = useStaggeredScrollAnimation(1, 0);
+  const { ref: gridRef, visibleItems } = useStaggeredScrollAnimation(projects.length, 150);
 
   return (
     <section id="portfolio" className="py-20 relative bg-secondary/20 overflow-hidden">
-      <EnhancedParticlesBackground variant="projects" intensity="medium" />
+      <AdvancedParticlesBackground variant="portfolio" intensity="high" />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
@@ -101,8 +101,34 @@ const EnhancedPortfolioSection = () => {
       </div>
       
       {/* Enhanced Background Elements */}
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-purple-500/3 rounded-full blur-3xl -z-10"></div>
+      <motion.div 
+        className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.2, 0.4, 0.2],
+          rotate: [0, 360]
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+      <motion.div 
+        className="absolute top-1/2 right-1/4 w-64 h-64 bg-purple-500/3 rounded-full blur-3xl -z-10"
+        animate={{
+          scale: [1, 1.4, 1],
+          opacity: [0.1, 0.3, 0.1],
+          x: [0, 30, 0],
+          y: [0, -15, 0]
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 5
+        }}
+      />
     </section>
   );
 };
