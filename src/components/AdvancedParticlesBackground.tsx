@@ -52,7 +52,9 @@ const AdvancedParticlesBackground: React.FC<AdvancedParticlesBackgroundProps> = 
             enable: !isMobile,
             mode: "repulse",
           },
-          resize: true,
+          resize: {
+            enable: true,
+          },
         },
         modes: {
           push: {

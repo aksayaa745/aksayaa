@@ -47,11 +47,11 @@ export const useAdvancedScrollAnimation = (options: AdvancedScrollAnimationOptio
 
   const getAnimationProps = () => {
     const baseProps = {
-      initial: {},
-      animate: {},
+      initial: {} as any,
+      animate: {} as any,
       transition: {
         duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: "easeOut" as const,
         delay: delay / 1000,
       },
     };
@@ -115,11 +115,11 @@ export const useStaggeredScrollAnimation = (itemCount: number, baseDelay = 100, 
 
   const getItemAnimationProps = (index: number, distance = 50) => {
     const baseProps = {
-      initial: {},
-      animate: {},
+      initial: {} as any,
+      animate: {} as any,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: "easeOut" as const,
         delay: (index * baseDelay) / 1000,
       },
     };

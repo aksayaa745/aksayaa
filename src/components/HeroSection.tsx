@@ -151,7 +151,7 @@ const HeroSection = () => {
                   className="text-5xl md:text-7xl font-serif font-bold bg-gradient-to-r from-white via-white/90 to-accent/80 bg-clip-text text-transparent"
                   initial={{ opacity: 0, y: 30, scale: 0.9 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ delay: 1, duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                  transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
                 >
                   <motion.span 
                     className="block text-2xl md:text-3xl font-light tracking-wide text-foreground mb-1"
