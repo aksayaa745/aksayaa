@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import AdvancedParticlesBackground from "@/components/AdvancedParticlesBackground";
 import { useAdvancedScrollAnimation, useStaggeredScrollAnimation } from "@/hooks/useAdvancedScrollAnimation";
-import { Code2, Palette, Users, Zap, Target, Heart } from "lucide-react";
 
 const AboutSection = () => {
   const { ref: headerRef, animationProps: headerAnimation } = useAdvancedScrollAnimation({ 
@@ -19,40 +18,6 @@ const AboutSection = () => {
   });
   
   const { ref: cardsRef, getItemAnimationProps } = useStaggeredScrollAnimation(2, 150, 'scale');
-  const { ref: skillsRef, getItemAnimationProps: getSkillAnimationProps } = useStaggeredScrollAnimation(6, 100, 'up');
-
-  const personalValues = [
-    {
-      icon: Code2,
-      title: "Technical Excellence",
-      description: "Committed to writing clean, efficient, and maintainable code that stands the test of time."
-    },
-    {
-      icon: Palette,
-      title: "Design Thinking", 
-      description: "Passionate about creating user-centered designs that are both beautiful and functional."
-    },
-    {
-      icon: Users,
-      title: "Collaboration",
-      description: "Believe in the power of teamwork and open communication to achieve exceptional results."
-    },
-    {
-      icon: Zap,
-      title: "Innovation",
-      description: "Always exploring new technologies and approaches to solve problems creatively."
-    },
-    {
-      icon: Target,
-      title: "Goal-Oriented",
-      description: "Focused on delivering results that exceed expectations and drive business value."
-    },
-    {
-      icon: Heart,
-      title: "Passion-Driven",
-      description: "Genuinely love what I do and bring enthusiasm to every project I work on."
-    }
-  ];
 
   return (
     <section id="about" className="py-20 relative overflow-hidden">
@@ -84,7 +49,7 @@ const AboutSection = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <motion.div 
-            className="space-y-8"
+            className="space-y-8 relative z-20"
             {...textAnimation}
           >
             {[
@@ -103,11 +68,24 @@ const AboutSection = () => {
               {
                 text: "When I'm not coding or designing, you'll find me exploring the latest tech trends, contributing to open-source projects, or mentoring fellow students. I believe in the power of community and the importance of giving back to the ecosystem that has given me so much.",
                 highlight: false
+              },
+              {
+                text: "My technical expertise spans across modern web technologies including React, Node.js, Python, and various design tools. I'm particularly passionate about creating accessible, user-centered designs that solve real-world problems while maintaining aesthetic appeal.",
+                highlight: false
+              },
+              {
+                text: "Beyond technical skills, I bring a collaborative spirit and strong communication abilities to every project. I thrive in team environments where diverse perspectives come together to create something extraordinary. My goal is to continue growing as both a developer and designer while contributing to meaningful projects that make a positive impact.",
+                highlight: false
               }
             ].map((item, index) => (
               <motion.div 
                 key={index}
-                className={`${item.highlight ? 'text-lg font-medium text-white' : 'text-muted-foreground'} leading-relaxed`}
+                className={`${item.highlight ? 'text-lg font-medium text-white' : 'text-gray-200'} leading-relaxed relative z-20`}
+                style={{ 
+                  color: item.highlight ? '#FFFFFF' : '#E5E7EB',
+                  position: 'relative',
+                  zIndex: 20
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={textAnimation.animate.opacity ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: 0.4 + index * 0.2, duration: 0.6 }}
@@ -117,15 +95,16 @@ const AboutSection = () => {
             ))}
 
             <motion.div
-              className="flex flex-wrap gap-3 mt-8"
+              className="flex flex-wrap gap-3 mt-8 relative z-20"
               initial={{ opacity: 0, y: 20 }}
               animate={textAnimation.animate.opacity ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 1.2, duration: 0.6 }}
             >
-              {["Problem Solver", "Creative Thinker", "Team Player", "Tech Enthusiast"].map((trait, index) => (
+              {["Problem Solver", "Creative Thinker", "Team Player", "Tech Enthusiast", "UI/UX Designer", "Full-Stack Developer"].map((trait, index) => (
                 <span 
                   key={index}
-                  className="px-4 py-2 bg-accent/10 border border-accent/20 rounded-full text-accent text-sm font-medium"
+                  className="px-4 py-2 bg-accent/10 border border-accent/20 rounded-full text-accent text-sm font-medium relative z-20"
+                  style={{ position: 'relative', zIndex: 20 }}
                 >
                   {trait}
                 </span>
@@ -133,15 +112,16 @@ const AboutSection = () => {
             </motion.div>
           </motion.div>
           
-          <div ref={cardsRef}>            
+          <div ref={cardsRef} className="relative z-20">            
             <div className="space-y-8">
               <motion.h4 
-                className="text-2xl font-serif mb-6 text-white"
+                className="text-2xl font-serif mb-6 text-white relative z-20"
+                style={{ color: '#FFFFFF', position: 'relative', zIndex: 20 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={headerAnimation.animate.opacity ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
               >
-                Educational Journey
+                Educational Journey & Achievements
               </motion.h4>
               
               {[
@@ -149,18 +129,25 @@ const AboutSection = () => {
                   title: "Rajalakshmi Engineering College",
                   period: "2022 - 2026",
                   degree: "B.E. Computer Science and Design",
-                  description: "Specializing in the intersection of technology and design, with focus on user experience, software engineering, and innovative problem-solving."
+                  description: "Specializing in the intersection of technology and design, with focus on user experience, software engineering, and innovative problem-solving. Currently maintaining a strong academic record while actively participating in tech communities and hackathons."
                 },
                 {
                   title: "Chettinad Vidyashram", 
                   period: "2020 - 2022",
                   degree: "Higher Secondary Education",
-                  description: "Graduated with distinction in Science stream, laying a strong foundation in mathematics, physics, and computer science."
+                  description: "Graduated with distinction in Science stream, laying a strong foundation in mathematics, physics, and computer science. Developed early programming skills and participated in various science competitions and tech events."
+                },
+                {
+                  title: "Professional Development",
+                  period: "Ongoing",
+                  degree: "Continuous Learning",
+                  description: "Actively pursuing certifications in cloud technologies, advanced React patterns, and design systems. Regular participant in tech meetups, workshops, and online learning platforms to stay current with industry trends."
                 }
               ].map((edu, index) => (
                 <motion.div
                   key={index}
                   {...getItemAnimationProps(index)}
+                  className="relative z-20"
                   whileHover={{ 
                     y: -5,
                     scale: 1.02,
@@ -174,7 +161,8 @@ const AboutSection = () => {
                     <CardContent className="p-6 relative z-10">
                       <div className="flex justify-between items-start mb-3">
                         <motion.h5 
-                          className="font-semibold text-lg group-hover:text-accent transition-colors"
+                          className="font-semibold text-lg group-hover:text-accent transition-colors text-white"
+                          style={{ color: '#FFFFFF' }}
                           whileHover={{ x: 5 }}
                         >
                           {edu.title}
@@ -184,7 +172,9 @@ const AboutSection = () => {
                         </span>
                       </div>
                       <p className="text-sm text-accent/80 font-medium mb-2">{edu.degree}</p>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{edu.description}</p>
+                      <p className="text-sm leading-relaxed text-gray-200" style={{ color: '#E5E7EB' }}>
+                        {edu.description}
+                      </p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -192,57 +182,6 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
-
-        {/* Personal Values Section */}
-        <motion.div 
-          className="mt-20"
-          initial={{ opacity: 0, y: 50 }}
-          animate={headerAnimation.animate.opacity ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <div className="text-center mb-12">
-            <h4 className="text-accent font-medium mb-2 tracking-wider">CORE VALUES</h4>
-            <h5 className="text-3xl md:text-4xl font-serif text-white">What Drives Me</h5>
-          </div>
-
-          <div ref={skillsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {personalValues.map((value, index) => {
-              const IconComponent = value.icon;
-              return (
-                <motion.div
-                  key={index}
-                  {...getSkillAnimationProps(index)}
-                  whileHover={{ 
-                    y: -10,
-                    scale: 1.05,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  <Card className="glass-morphism group hover:border-accent/30 transition-all duration-300 relative overflow-hidden h-full">
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    />
-                    <CardContent className="p-6 relative z-10 text-center">
-                      <motion.div
-                        className="inline-flex items-center justiy-center w-12 h-12 bg-accent/10 rounded-full mb-4 group-hover:bg-accent/20 transition-colors"
-                        whileHover={{ rotate: 360, scale: 1.1 }}
-                        transition={{ duration: 0.6 }}
-                      >
-                        <IconComponent className="w-6 h-6 text-accent" />
-                      </motion.div>
-                      <h6 className="font-semibold text-white mb-2 group-hover:text-accent transition-colors">
-                        {value.title}
-                      </h6>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {value.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
       </div>
       
       {/* Enhanced Background Elements */}

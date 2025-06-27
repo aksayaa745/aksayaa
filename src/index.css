@@ -84,6 +84,37 @@
     @apply bg-gradient-to-br from-white via-white/90 to-accent/70 bg-clip-text text-transparent;
   }
 
+  /* Enhanced text visibility */
+  .content-section {
+    position: relative;
+    z-index: 10;
+  }
+
+  .content-text {
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 20;
+  }
+
+  .content-text-muted {
+    color: #E5E7EB !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 20;
+  }
+
+  /* Particle background container */
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
   /* Enhanced animations */
   @keyframes shimmer {
     0% { transform: translateX(-100%); }
@@ -112,6 +143,13 @@
     }
   }
 
+  @keyframes particle-drift {
+    0% { transform: translateY(0px) translateX(0px); }
+    33% { transform: translateY(-20px) translateX(10px); }
+    66% { transform: translateY(-10px) translateX(-5px); }
+    100% { transform: translateY(0px) translateX(0px); }
+  }
+
   .animate-shimmer {
     animation: shimmer 2s infinite;
   }
@@ -126,6 +164,10 @@
 
   .animate-pulse-glow {
     animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  .animate-particle-drift {
+    animation: particle-drift 8s ease-in-out infinite;
   }
 
   /* Hover effects */
@@ -196,5 +238,21 @@
 
   .smooth-transition {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Enhanced content layering */
+  .main-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-content {
+    position: relative;
+    z-index: 10;
+  }
+
+  .text-content {
+    position: relative;
+    z-index: 20;
   }
 }
