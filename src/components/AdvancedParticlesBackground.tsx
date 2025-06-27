@@ -140,7 +140,6 @@ const AdvancedParticlesBackground: React.FC<AdvancedParticlesBackgroundProps> = 
   return (
     <Particles
       id={`particles-${variant}`}
-      init={particlesInit}
       options={getParticleConfig()}
       className="absolute inset-0 pointer-events-none z-0"
       style={{ opacity: variant === 'hero' ? 0.8 : 0.6 }}
