@@ -11,27 +11,31 @@ import { useAdvancedScrollAnimation } from "@/hooks/useAdvancedScrollAnimation";
 const HeroSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   
-  // Individual animation hooks for different elements
+  // Make container immediately visible to fix blank hero section
   const { ref: containerRef, animationProps: containerAnimation } = useAdvancedScrollAnimation({ 
     direction: 'fade', 
-    threshold: 0.2 
+    threshold: 0.2,
+    immediatelyVisible: true
   });
   
   const { animationProps: textAnimation } = useAdvancedScrollAnimation({ 
     direction: 'up', 
     delay: 200,
-    distance: 60
+    distance: 60,
+    immediatelyVisible: true
   });
   
   const { animationProps: avatarAnimation } = useAdvancedScrollAnimation({ 
     direction: 'scale', 
-    delay: 400
+    delay: 400,
+    immediatelyVisible: true
   });
   
   const { animationProps: buttonsAnimation } = useAdvancedScrollAnimation({ 
     direction: 'up', 
     delay: 600,
-    distance: 30
+    distance: 30,
+    immediatelyVisible: true
   });
   
   const titles = [

@@ -1,4 +1,3 @@
-
 import React, { useCallback } from 'react';
 import { Engine } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
@@ -14,8 +13,9 @@ const AdvancedParticlesBackground: React.FC<AdvancedParticlesBackgroundProps> = 
   intensity = 'medium' 
 }) => {
   const particlesInit = useCallback(async (engine: Engine) => {
+    console.log('Initializing particles engine for variant:', variant);
     await loadSlim(engine);
-  }, []);
+  }, [variant]);
 
   const getParticleConfig = () => {
     const isMobile = window.innerWidth < 768;
@@ -139,6 +139,7 @@ const AdvancedParticlesBackground: React.FC<AdvancedParticlesBackgroundProps> = 
   return (
     <Particles
       id={`particles-${variant}`}
+      init={particlesInit}
       options={getParticleConfig()}
       className="absolute inset-0 pointer-events-none z-0"
       style={{ opacity: variant === 'hero' ? 0.8 : 0.6 }}
